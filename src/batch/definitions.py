@@ -1,0 +1,76 @@
+## DEFAULT SCHEMA FOR BATCH PROCESSING ##
+
+#TRANSACTION TABLE
+
+TRANSACTION = {
+    'table_name': 'transactions',
+    'base_query':"""
+    CREATE SEQUENCE IF NOT EXISTS transaction_id_seq START 1 INCREMENT BY 1;
+    CREATE TABLE IF NOT EXISTS transactions (
+    id INTEGER PRIMARY KEY DEFAULT nextval('transaction_id_seq'),
+    time INTEGER,
+    v1 FLOAT,
+    v2 FLOAT,
+    v3 FLOAT,
+    v4 FLOAT,
+    v5 FLOAT,
+    v6 FLOAT,
+    v7 FLOAT,
+    v8 FLOAT,
+    v9 FLOAT,
+    v10 FLOAT,
+    v11 FLOAT,
+    v12 FLOAT,
+    v13 FLOAT,
+    v14 FLOAT,
+    v15 FLOAT,
+    v16 FLOAT,
+    v17 FLOAT,
+    v18 FLOAT,
+    v19 FLOAT,
+    v20 FLOAT,
+    v21 FLOAT,
+    v22 FLOAT,
+    v23 FLOAT,
+    v24 FLOAT,
+    v25 FLOAT,
+    v26 FLOAT,
+    v27 FLOAT,
+    v28 FLOAT,
+    amount FLOAT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+""",
+'expected_columns': ['time',
+'v1', 
+'v2', 
+'v3',
+'v4',
+'v5',
+'v6',
+'v7',
+'v8',
+'v9',
+'v10', 
+'v11', 
+'v12', 
+'v13', 
+'v14', 
+'v15', 
+'v16', 
+'v17', 
+'v18', 
+'v19', 
+'v20', 
+'v21', 
+'v22', 
+'v23', 
+'v24', 
+'v25', 
+'v26', 
+'v27', 
+'v28', 
+'amount']
+}
+
+
