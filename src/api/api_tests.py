@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
-from api.api import app
+from .api import app, get_db
 import duckdb
-from model import BASE_TABLE_QUERY, CREATE_SEQUENCE_QUERY
+from .model import BASE_TABLE_QUERY, CREATE_SEQUENCE_QUERY
 from pathlib import Path
 
 # -------------------------------

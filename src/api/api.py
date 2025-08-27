@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException, Depends
 from typing import List
-import schemas
-from database import get_connection
-from model import BASE_TABLE_QUERY, CREATE_SEQUENCE_QUERY
+from . import schemas
+from .database import get_connection
+from .model import BASE_TABLE_QUERY, CREATE_SEQUENCE_QUERY
 import uvicorn
 
 
@@ -66,7 +66,7 @@ def read_transaction(transaction_id: int, con = Depends(get_db)):
 
 @app.put("/transactions/{transaction_id}", response_model=schemas.TransactionResponse)
 def update_transaction(transaction_id: int, transaction_update: schemas.TransactionUpdate, con = Depends(get_db)):
-    update_data = {k: v for k, v in transaction_update.dict(exclude_unset=True).items()}
+    update_data = {k: v for k, v in transaction_update.model_dump(exclude_unset=True).items()}
     if not update_data:
         raise HTTPException(status_code=400, detail="No fields to update")
     set_clause = ", ".join([f"{k} = ?" for k in update_data.keys()])
@@ -82,6 +82,7 @@ def delete_transaction(transaction_id: int, con = Depends(get_db)):
     cur = con.execute("DELETE FROM transactions WHERE id = ?", [transaction_id])
     if cur.rowcount == 0:
         raise HTTPException(status_code=404, detail="Transaction not found")
+    return None
     
 if __name__ == "__main__":
     uvicorn.run("api:app", host="0.0.0.0", port=8000, reload=False)
