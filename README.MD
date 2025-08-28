@@ -9,7 +9,6 @@ Based on this [Kaggle challenge dataset](https://www.kaggle.com/datasets/mlg-ulb
 - 🎯 RESTful API for transaction management (CRUD operations)
 - 🦆 DuckDB database backend
 - 📊 Batch processing for Parquet data ingestion
-- 📓 Notebook demonstrating the features of the application
 
 ## 🐳 Docker Setup
 
@@ -25,9 +24,34 @@ Based on this [Kaggle challenge dataset](https://www.kaggle.com/datasets/mlg-ulb
    Use this specific approach to ensure that the test suite runs before the API itself:
 
    ```bash
-   docker-compose --profile test up test api
+   docker-compose --profile test up --build test api
    ```
-   After that, you can curl the endpoints or, just use the `demonstration notebook`
+
+2. **Run the main.py script:**
+
+   After building the docker file, with the api running go to the
+   the root folder, create a virtual enviroment and install the requirements, you can do this with the following, on a cmd terminal:
+
+   ```powershell
+   python -m venv <env_name>
+   ```
+
+   ```powershell
+   cd <env_name>/script
+   activate
+   ```
+   ```powershell
+   pip install -r requirements.txt
+   ```
+   Go back to the root folder, and run the script by doing:
+
+      ```powershell
+   python main.py
+   ```
+
+   This should populate the `transactions` database with two tables. One named `transactions` with the online data and another `transactions_batch`
+   for batch ingestion.
+
 
 ## 🔌 API Endpoints
 
@@ -51,12 +75,6 @@ The following columns will be automatically created. For batch ingestion, the Pa
 - id
 - created_at
 
-## 🛠️ Development
-
-The Docker setup includes volume mounts for:
-- `./src` - Source code (hot reload)
-- `./database` - DuckDB database files
-- `./datasets` - Data files and Parquet datasets
 
 ## 📁 Project Structure
 
@@ -71,5 +89,6 @@ The Docker setup includes volume mounts for:
 │   ├── batch/        # Batch processing
 │   ├── database/     # Database files
 │   └── datasets/     # Data files
-└── Demonstration.ipynb  # Testing notebook
+└── Demonstration.ipynb  # Desmonstration notebook
+└── main.py  # Ingestion script
 ```
