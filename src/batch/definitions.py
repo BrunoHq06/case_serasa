@@ -6,7 +6,7 @@ TRANSACTION = {
     'table_name': 'transactions_batch',
     'base_query':"""
     CREATE SEQUENCE IF NOT EXISTS transaction_id_seq START 1 INCREMENT BY 1;
-    CREATE TABLE IF NOT EXISTS transactions (
+    CREATE TABLE IF NOT EXISTS transactions_batch (
     id INTEGER PRIMARY KEY DEFAULT nextval('transaction_id_seq'),
     time INTEGER,
     v1 FLOAT,
