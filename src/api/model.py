@@ -1,3 +1,15 @@
+"""
+Database Schema Definitions for Transaction Management
+
+This module contains SQL queries and schema definitions for the transaction database.
+It defines the table structure, sequences, and DDL statements used to initialize
+the database schema.
+
+Constants:
+    - CREATE_SEQUENCE_QUERY: SQL to create the transaction ID sequence
+    - BASE_TABLE_QUERY: SQL to create the main transactions table
+"""
+
 CREATE_SEQUENCE_QUERY = "CREATE SEQUENCE IF NOT EXISTS transaction_id_seq START 1 INCREMENT BY 1;"
 
 # Creating table if not exist

@@ -1,3 +1,15 @@
+"""
+Batch Processing Schema Definitions
+
+This module contains schema definitions and table configurations for batch processing
+of transaction data. It defines the structure for batch ingestion tables and provides
+configuration for data validation and table creation.
+
+Constants:
+    - TRANSACTION: Complete configuration for transaction batch processing including
+      table schema, creation queries, and expected column definitions
+"""
+
 ## DEFAULT SCHEMA FOR BATCH PROCESSING ##
 
 #TRANSACTION TABLE
