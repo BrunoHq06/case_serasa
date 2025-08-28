@@ -70,7 +70,7 @@ print("Deleted:", resp.status_code, resp.text)
 
 # Batch ingestion
 ingest_parquet_to_db(
-    db_path="src/database/transactions.duckdb",
+    db_path="src/database/batch_ingestions.duckdb",
     parquet_path="src/datasets/partitioned_data/",
     definition=TRANSACTION
 )

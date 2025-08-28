@@ -40,8 +40,10 @@ Based on this [Kaggle challenge dataset](https://www.kaggle.com/datasets/mlg-ulb
    cd <env_name>/script
    activate
    ```
+   If you want to install dependencies, you can just pip the whole requirements file. But in the main script, we only use:
+
    ```powershell
-   pip install -r requirements.txt
+   pip install requests==2.31.0 pandas>=2.1.3 duckdb==1.3.2
    ```
    Go back to the root folder, and run the script by doing:
 
@@ -49,8 +51,7 @@ Based on this [Kaggle challenge dataset](https://www.kaggle.com/datasets/mlg-ulb
    python main.py
    ```
 
-   This should populate the `transactions` database with two tables. One named `transactions` with the online data and another `transactions_batch`
-   for batch ingestion.
+   This should populate the `transactions` database for online transaction table. And another for the batch ingestions, with the `transactions_batch` table.
 
 
 ## 🔌 API Endpoints

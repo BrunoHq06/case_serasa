@@ -1,6 +1,6 @@
 CREATE_SEQUENCE_QUERY = "CREATE SEQUENCE IF NOT EXISTS transaction_id_seq START 1 INCREMENT BY 1;"
 
-# Criação da tabela se não existir
+# Creating table if not exist
 BASE_TABLE_QUERY = ("""
 CREATE TABLE IF NOT EXISTS transactions (
     id INTEGER PRIMARY KEY DEFAULT nextval('transaction_id_seq'),
