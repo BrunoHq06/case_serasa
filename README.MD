@@ -25,7 +25,7 @@ Based on this [Kaggle challenge dataset](https://www.kaggle.com/datasets/mlg-ulb
    Use this specific approach to ensure that the test suite runs before the API itself:
 
    ```bash
-   docker-compose --profile test up test api
+   docker-compose --profile test up --build test api
    ```
    After that, you can curl the endpoints or, just use the `demonstration notebook`
 

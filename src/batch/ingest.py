@@ -10,7 +10,7 @@ def ingest_parquet_to_db(db_path: str, parquet_path: str, definition: dict):
 
     # Ensure path exists
     if not Path(parquet_path).exists():
-        raise FileNotFoundError(f"O caminho {parquet_path} não existe.")
+        raise FileNotFoundError(f"Path for {parquet_path} does not exist.")
 
     # connect to DuckDB, if it doesn't exist, it will be created.
     con = duckdb.connect(db_path)
