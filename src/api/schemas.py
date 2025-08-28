@@ -1,8 +1,29 @@
+"""
+Pydantic Data Models for Transaction API
+
+This module defines the data validation schemas using Pydantic models for:
+- Request/response data validation
+- API input/output serialization
+- Data type enforcement and conversion
+
+Models:
+    - TransactionBase: Base transaction model with common fields
+    - TransactionCreate: Model for creating new transactions
+    - TransactionUpdate: Model for updating existing transactions
+    - TransactionResponse: Model for API responses
+"""
+
 from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
 
 class TransactionBase(BaseModel):
+    """
+    Base transaction model containing all common transaction fields.
+    
+    This model defines the structure for financial transaction data including
+    time, 28 feature variables (v1-v28), and amount.
+    """
     time: int
     v1: float
     v2: float
@@ -35,9 +56,21 @@ class TransactionBase(BaseModel):
     amount: float
 
 class TransactionCreate(TransactionBase):
+    """
+    Model for creating new transactions.
+    
+    Inherits all fields from TransactionBase. Used for POST requests
+    to create new transaction records.
+    """
     pass
 
 class TransactionUpdate(BaseModel):
+    """
+    Model for updating existing transactions.
+    
+    All fields are optional, allowing partial updates. Only provided
+    fields will be updated in the database.
+    """
     time: Optional[int] = None
     v1: Optional[float] = None
     v2: Optional[float] = None
@@ -70,6 +103,13 @@ class TransactionUpdate(BaseModel):
     amount: Optional[float] = None
 
 class TransactionResponse(TransactionBase):
+    """
+    Model for transaction API responses.
+    
+    Extends TransactionBase with system-generated fields:
+    - id: Unique transaction identifier
+    - created_at: Timestamp when the record was created
+    """
     id: int
     created_at: datetime
 

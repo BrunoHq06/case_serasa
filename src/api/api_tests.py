@@ -1,3 +1,12 @@
+"""
+API Testing Module
+
+This module contains test cases for the Transaction API endpoints.
+It provides comprehensive testing of all CRUD operations 
+to ensure the API functions correctly.
+
+"""
+
 from fastapi.testclient import TestClient
 from .api import app, get_db
 import duckdb
