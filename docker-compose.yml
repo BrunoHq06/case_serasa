@@ -6,8 +6,6 @@ services:
     command: python -m pytest src/api/api_tests.py -v --tb=short
     volumes:
       - ./src:/app/src
-      - ./database:/app/database
-      - ./datasets:/app/datasets
     environment:
       - PYTHONPATH=/app/src
       - PYTHONUNBUFFERED=1
@@ -21,8 +19,6 @@ services:
       - "8000:8000"
     volumes:
       - ./src:/app/src
-      - ./database:/app/database
-      - ./datasets:/app/datasets
     environment:
       - PYTHONPATH=/app/src
       - PYTHONUNBUFFERED=1

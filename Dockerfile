@@ -20,9 +20,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy source code
 COPY src/ ./src/
 
-# Create necessary directories
-RUN mkdir -p database datasets
-
 # Expose port
 EXPOSE 8000
 
