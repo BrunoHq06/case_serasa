@@ -5,10 +5,6 @@ This module handles database connectivity and configuration for the transaction 
 It provides a centralized way to manage DuckDB connections and ensures proper
 database initialization.
 
-Features:
-    - Automatic database path resolution
-    - Database directory creation
-    - Connection management for FastAPI dependency injection
 """
 
 from pathlib import Path
@@ -29,20 +25,5 @@ def get_connection():
     
     Returns:
         duckdb.Connection: A DuckDB database connection
-        
-    Note:
-        Can be used with FastAPI Depends for dependency injection.
-        The connection is not automatically closed - use with context manager
-        or ensure proper cleanup in your code.
-        
-    Example:
-        # Using as context manager (recommended)
-        with get_connection() as con:
-            result = con.execute("SELECT * FROM transactions").fetchall()
-            
-        # Using with FastAPI dependency
-        def my_endpoint(con = Depends(get_connection)):
-            result = con.execute("SELECT * FROM transactions").fetchall()
-            return result
     """
     return duckdb.connect(str(DB_PATH))
